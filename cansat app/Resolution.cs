@@ -34,10 +34,6 @@ namespace cansat_app
             export = "C:/cansat 2022/csv/";
         }
 
-        private void pictureBox7_Click(object sender, EventArgs e)
-        {
-
-        }
         
         static bool _continue;
         
@@ -190,6 +186,7 @@ namespace cansat_app
         private void button3_Click(object sender, EventArgs e)
         {
             init();
+            btnConnect.BackColor = Color.PaleGreen;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -295,6 +292,10 @@ namespace cansat_app
 
             }
             serialPort1.Write(bufferout.ToArray(), 0, bufferout.Count);
+            if (textBox2.Text.ToUpper() == "CMD,1064,CX,OFF")
+            {
+                btnTelOn.BackColor = Color.White;
+            }
 
 
         }
@@ -304,25 +305,7 @@ namespace cansat_app
 
         }
 
-        private void label17_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void missionTime_lbl_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         //FUNCION PUBLICA MANDAR DATOS A LABEL EN TIEMPO REALL
         public void PutData(string pc, string mt, string gpsT, string gpsLa, string gpsLo, string gpsA, string gpsS, string cV, string cA, string cT, string tpr)
@@ -407,17 +390,6 @@ namespace cansat_app
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
         delegate void SetTextCallback(string text);
 
         private void SetText(string text)
@@ -436,77 +408,17 @@ namespace cansat_app
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog
-            {
-                InitialDirectory = @"C:\",
-                Title = "Browse Text Files",
-
-                CheckFileExists = true,
-                CheckPathExists = true,
-
-                DefaultExt = "txt",
-                Filter = "txt files (*.txt)|*.txt",
-                FilterIndex = 2,
-                RestoreDirectory = true,
-
-                ReadOnlyChecked = true,
-                ShowReadOnly = true
-            };
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                textBox3.Text = openFileDialog1.FileName;
-            }
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog
-            {
-                InitialDirectory = @"C:\",
-                Title = "Browse Text Files",
-
-                CheckFileExists = false,
-                CheckPathExists = true,
-
-                DefaultExt = "txt",
-                Filter = "txt files (*.txt)|*.txt",
-                FilterIndex = 2,
-                RestoreDirectory = true,
-
-                ReadOnlyChecked = false,
-                ShowReadOnly = true
-            };
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                textBox4.Text = openFileDialog1.FileName;
-            }
-        }
-
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-            Resolution.export = this.textBox4.Text;
-        }
-
+       
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
             Resolution.simfile= this.textBox3.Text;
         }
 
-        
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            timer1.Enabled = true;
-            file = new System.IO.StreamReader(this.textBox3.Text);
-        }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             packetCount++;
+            btnTelOn.BackColor = Color.PaleGreen;
             fillForm(textBox1.Text.Split(',').ToList()); //muestra los datos en pantalla
             Mqtt.Publish(textBox1.Text); //envia los datos al Servidor MQTT
             imgMqttRed.Visible =false;
@@ -532,11 +444,6 @@ namespace cansat_app
 
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnDisconnect_Click(object sender, EventArgs e)
         {
             if (serialPort1.IsOpen)
@@ -546,6 +453,8 @@ namespace cansat_app
 
             imgMqttRed.Visible = true;
             imgMqttGreen.Visible = false;
+            btnConnect.BackColor = Color.White;
+            btnTelOn.BackColor = Color.White;
         }
     }
     public class Container

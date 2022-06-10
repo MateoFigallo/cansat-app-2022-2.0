@@ -290,5 +290,8 @@
   <ItemGroup>
     <None Include="Resources\Cansat.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\img-btnplay.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

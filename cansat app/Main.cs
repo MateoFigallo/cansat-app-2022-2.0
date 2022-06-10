@@ -12,7 +12,15 @@ namespace cansat_app
     {
         public Main()
         {
+
             InitializeComponent();
+            label1.Text = DateTime.UtcNow.ToString("HH:mm");
+            label2.Text = DateTime.Now.Date.ToString("MM-dd-yyyy");
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
 
         }
     }
