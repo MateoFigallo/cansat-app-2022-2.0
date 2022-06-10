@@ -59,8 +59,6 @@ namespace cansat_app
             this.P1T_lbl = new System.Windows.Forms.Label();
             this.f = new System.Windows.Forms.Label();
             this.P1A_lbl = new System.Windows.Forms.Label();
-            this.P1pc_lbl = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -69,9 +67,7 @@ namespace cansat_app
             this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.imgMqttRed = new System.Windows.Forms.PictureBox();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.packetCount_lbl = new System.Windows.Forms.Label();
@@ -79,16 +75,17 @@ namespace cansat_app
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnTelOn = new System.Windows.Forms.Button();
+            this.btnSend = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnConnect = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.button8 = new System.Windows.Forms.Button();
+            this.imgMqttGreen = new System.Windows.Forms.PictureBox();
+            this.btnDisconnect = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.P1red_img)).BeginInit();
@@ -96,10 +93,10 @@ namespace cansat_app
             this.groupBox3.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgMqttRed)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.groupBox9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgMqttGreen)).BeginInit();
             this.SuspendLayout();
             // 
             // label19
@@ -108,7 +105,7 @@ namespace cansat_app
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.Black;
-            this.label19.Location = new System.Drawing.Point(15, 155);
+            this.label19.Location = new System.Drawing.Point(11, 155);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(69, 20);
             this.label19.TabIndex = 31;
@@ -120,7 +117,7 @@ namespace cansat_app
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(15, 183);
+            this.label2.Location = new System.Drawing.Point(11, 183);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 20);
             this.label2.TabIndex = 29;
@@ -208,9 +205,9 @@ namespace cansat_app
             this.groupBox1.Font = new System.Drawing.Font("Impact", 12F);
             this.groupBox1.ForeColor = System.Drawing.Color.Red;
             this.groupBox1.Location = new System.Drawing.Point(8, 29);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(250, 233);
             this.groupBox1.TabIndex = 33;
             this.groupBox1.TabStop = false;
@@ -231,7 +228,7 @@ namespace cansat_app
             // 
             this.cAltitude_lbl.AutoSize = true;
             this.cAltitude_lbl.ForeColor = System.Drawing.Color.Black;
-            this.cAltitude_lbl.Location = new System.Drawing.Point(93, 183);
+            this.cAltitude_lbl.Location = new System.Drawing.Point(87, 183);
             this.cAltitude_lbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.cAltitude_lbl.Name = "cAltitude_lbl";
             this.cAltitude_lbl.Size = new System.Drawing.Size(91, 20);
@@ -310,7 +307,7 @@ namespace cansat_app
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.Black;
-            this.label23.Location = new System.Drawing.Point(17, 208);
+            this.label23.Location = new System.Drawing.Point(11, 211);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(104, 20);
             this.label23.TabIndex = 33;
@@ -323,9 +320,9 @@ namespace cansat_app
             this.groupBox7.Font = new System.Drawing.Font("Impact", 12F);
             this.groupBox7.ForeColor = System.Drawing.Color.Red;
             this.groupBox7.Location = new System.Drawing.Point(625, 10);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox7.Size = new System.Drawing.Size(232, 61);
             this.groupBox7.TabIndex = 34;
             this.groupBox7.TabStop = false;
@@ -335,7 +332,7 @@ namespace cansat_app
             // 
             this.P1red_img.Image = ((System.Drawing.Image)(resources.GetObject("P1red_img.Image")));
             this.P1red_img.Location = new System.Drawing.Point(59, 25);
-            this.P1red_img.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.P1red_img.Margin = new System.Windows.Forms.Padding(2);
             this.P1red_img.Name = "P1red_img";
             this.P1red_img.Size = new System.Drawing.Size(29, 22);
             this.P1red_img.TabIndex = 12;
@@ -345,7 +342,7 @@ namespace cansat_app
             // 
             this.P1green_img.Image = ((System.Drawing.Image)(resources.GetObject("P1green_img.Image")));
             this.P1green_img.Location = new System.Drawing.Point(148, 25);
-            this.P1green_img.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.P1green_img.Margin = new System.Windows.Forms.Padding(2);
             this.P1green_img.Name = "P1green_img";
             this.P1green_img.Size = new System.Drawing.Size(29, 22);
             this.P1green_img.TabIndex = 17;
@@ -357,7 +354,7 @@ namespace cansat_app
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(10, 139);
+            this.label5.Location = new System.Drawing.Point(5, 106);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(128, 20);
             this.label5.TabIndex = 41;
@@ -369,7 +366,7 @@ namespace cansat_app
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(10, 105);
+            this.label4.Location = new System.Drawing.Point(5, 76);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(104, 20);
             this.label4.TabIndex = 39;
@@ -382,7 +379,7 @@ namespace cansat_app
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(10, 70);
+            this.label3.Location = new System.Drawing.Point(5, 42);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 20);
             this.label3.TabIndex = 36;
@@ -394,18 +391,16 @@ namespace cansat_app
             this.groupBox3.Controls.Add(this.P1T_lbl);
             this.groupBox3.Controls.Add(this.f);
             this.groupBox3.Controls.Add(this.P1A_lbl);
-            this.groupBox3.Controls.Add(this.P1pc_lbl);
-            this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Font = new System.Drawing.Font("Impact", 12F);
             this.groupBox3.ForeColor = System.Drawing.Color.Red;
             this.groupBox3.Location = new System.Drawing.Point(625, 82);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox3.Size = new System.Drawing.Size(232, 181);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox3.Size = new System.Drawing.Size(232, 161);
             this.groupBox3.TabIndex = 35;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tethered Payload";
@@ -414,7 +409,7 @@ namespace cansat_app
             // 
             this.P1RPM_lbl.AutoSize = true;
             this.P1RPM_lbl.ForeColor = System.Drawing.Color.Black;
-            this.P1RPM_lbl.Location = new System.Drawing.Point(143, 139);
+            this.P1RPM_lbl.Location = new System.Drawing.Point(144, 106);
             this.P1RPM_lbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.P1RPM_lbl.Name = "P1RPM_lbl";
             this.P1RPM_lbl.Size = new System.Drawing.Size(76, 20);
@@ -425,7 +420,7 @@ namespace cansat_app
             // 
             this.P1T_lbl.AutoSize = true;
             this.P1T_lbl.ForeColor = System.Drawing.Color.Black;
-            this.P1T_lbl.Location = new System.Drawing.Point(125, 106);
+            this.P1T_lbl.Location = new System.Drawing.Point(122, 76);
             this.P1T_lbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.P1T_lbl.Name = "P1T_lbl";
             this.P1T_lbl.Size = new System.Drawing.Size(55, 20);
@@ -445,35 +440,12 @@ namespace cansat_app
             // 
             this.P1A_lbl.AutoSize = true;
             this.P1A_lbl.ForeColor = System.Drawing.Color.Black;
-            this.P1A_lbl.Location = new System.Drawing.Point(103, 72);
+            this.P1A_lbl.Location = new System.Drawing.Point(104, 42);
             this.P1A_lbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.P1A_lbl.Name = "P1A_lbl";
             this.P1A_lbl.Size = new System.Drawing.Size(55, 20);
             this.P1A_lbl.TabIndex = 43;
             this.P1A_lbl.Text = "P1A_lbl";
-            // 
-            // P1pc_lbl
-            // 
-            this.P1pc_lbl.AutoSize = true;
-            this.P1pc_lbl.ForeColor = System.Drawing.Color.Black;
-            this.P1pc_lbl.Location = new System.Drawing.Point(127, 35);
-            this.P1pc_lbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.P1pc_lbl.Name = "P1pc_lbl";
-            this.P1pc_lbl.Size = new System.Drawing.Size(64, 20);
-            this.P1pc_lbl.TabIndex = 41;
-            this.P1pc_lbl.Text = "P1pc_lbl";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(10, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 20);
-            this.label1.TabIndex = 42;
-            this.label1.Text = "Packet Count =";
             // 
             // groupBox6
             // 
@@ -485,11 +457,11 @@ namespace cansat_app
             this.groupBox6.Controls.Add(this.button2);
             this.groupBox6.Font = new System.Drawing.Font("Impact", 12F);
             this.groupBox6.ForeColor = System.Drawing.Color.Red;
-            this.groupBox6.Location = new System.Drawing.Point(275, 184);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.groupBox6.Location = new System.Drawing.Point(275, 212);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(1);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.groupBox6.Size = new System.Drawing.Size(339, 95);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(1);
+            this.groupBox6.Size = new System.Drawing.Size(339, 100);
             this.groupBox6.TabIndex = 42;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Sim";
@@ -497,7 +469,7 @@ namespace cansat_app
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(100, 53);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(147, 27);
             this.textBox4.TabIndex = 22;
@@ -507,7 +479,7 @@ namespace cansat_app
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(100, 24);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(147, 27);
             this.textBox3.TabIndex = 21;
@@ -521,7 +493,7 @@ namespace cansat_app
             this.button7.Font = new System.Drawing.Font("Impact", 12F);
             this.button7.ForeColor = System.Drawing.Color.Black;
             this.button7.Location = new System.Drawing.Point(15, 53);
-            this.button7.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.button7.Margin = new System.Windows.Forms.Padding(1);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(82, 29);
             this.button7.TabIndex = 20;
@@ -536,7 +508,7 @@ namespace cansat_app
             this.button5.Font = new System.Drawing.Font("Impact", 12F);
             this.button5.ForeColor = System.Drawing.Color.Black;
             this.button5.Location = new System.Drawing.Point(257, 56);
-            this.button5.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.button5.Margin = new System.Windows.Forms.Padding(1);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(72, 23);
             this.button5.TabIndex = 19;
@@ -551,7 +523,7 @@ namespace cansat_app
             this.button4.Font = new System.Drawing.Font("Impact", 12F);
             this.button4.ForeColor = System.Drawing.Color.Black;
             this.button4.Location = new System.Drawing.Point(257, 25);
-            this.button4.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.button4.Margin = new System.Windows.Forms.Padding(1);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(72, 23);
             this.button4.TabIndex = 18;
@@ -566,7 +538,7 @@ namespace cansat_app
             this.button2.Font = new System.Drawing.Font("Impact", 12F);
             this.button2.ForeColor = System.Drawing.Color.Black;
             this.button2.Location = new System.Drawing.Point(15, 20);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(78, 30);
             this.button2.TabIndex = 17;
@@ -576,59 +548,36 @@ namespace cansat_app
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.pictureBox11);
-            this.groupBox8.Controls.Add(this.pictureBox10);
-            this.groupBox8.Controls.Add(this.label15);
+            this.groupBox8.Controls.Add(this.imgMqttGreen);
+            this.groupBox8.Controls.Add(this.imgMqttRed);
             this.groupBox8.Controls.Add(this.label14);
             this.groupBox8.Font = new System.Drawing.Font("Impact", 12F);
             this.groupBox8.ForeColor = System.Drawing.Color.Red;
             this.groupBox8.Location = new System.Drawing.Point(289, 34);
-            this.groupBox8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox8.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox8.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox8.Size = new System.Drawing.Size(105, 75);
             this.groupBox8.TabIndex = 43;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "MQTT";
             // 
-            // pictureBox11
+            // imgMqttRed
             // 
-            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
-            this.pictureBox11.Location = new System.Drawing.Point(63, 25);
-            this.pictureBox11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(30, 16);
-            this.pictureBox11.TabIndex = 12;
-            this.pictureBox11.TabStop = false;
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox10.Image")));
-            this.pictureBox10.Location = new System.Drawing.Point(63, 52);
-            this.pictureBox10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(30, 16);
-            this.pictureBox10.TabIndex = 11;
-            this.pictureBox10.TabStop = false;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Impact", 12F);
-            this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.Location = new System.Drawing.Point(9, 52);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(38, 20);
-            this.label15.TabIndex = 9;
-            this.label15.Text = "Sent";
+            this.imgMqttRed.Image = ((System.Drawing.Image)(resources.GetObject("imgMqttRed.Image")));
+            this.imgMqttRed.Location = new System.Drawing.Point(63, 25);
+            this.imgMqttRed.Margin = new System.Windows.Forms.Padding(2);
+            this.imgMqttRed.Name = "imgMqttRed";
+            this.imgMqttRed.Size = new System.Drawing.Size(30, 16);
+            this.imgMqttRed.TabIndex = 12;
+            this.imgMqttRed.TabStop = false;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Impact", 12F);
             this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(9, 24);
+            this.label14.Location = new System.Drawing.Point(8, 34);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(51, 20);
@@ -644,9 +593,9 @@ namespace cansat_app
             this.groupBox5.Font = new System.Drawing.Font("Impact", 12F);
             this.groupBox5.ForeColor = System.Drawing.Color.White;
             this.groupBox5.Location = new System.Drawing.Point(399, 34);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox5.Size = new System.Drawing.Size(201, 75);
             this.groupBox5.TabIndex = 44;
             this.groupBox5.TabStop = false;
@@ -701,69 +650,68 @@ namespace cansat_app
             // 
             // groupBox9
             // 
-            this.groupBox9.Controls.Add(this.button6);
-            this.groupBox9.Controls.Add(this.button1);
+            this.groupBox9.Controls.Add(this.btnSend);
             this.groupBox9.Controls.Add(this.textBox2);
             this.groupBox9.Controls.Add(this.textBox1);
             this.groupBox9.Controls.Add(this.label22);
             this.groupBox9.Controls.Add(this.label18);
             this.groupBox9.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox9.ForeColor = System.Drawing.Color.Red;
-            this.groupBox9.Location = new System.Drawing.Point(73, 296);
-            this.groupBox9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox9.Location = new System.Drawing.Point(73, 315);
+            this.groupBox9.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Padding = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.groupBox9.Padding = new System.Windows.Forms.Padding(1);
             this.groupBox9.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.groupBox9.Size = new System.Drawing.Size(711, 152);
+            this.groupBox9.Size = new System.Drawing.Size(711, 133);
             this.groupBox9.TabIndex = 45;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Telemetry";
             this.groupBox9.Enter += new System.EventHandler(this.groupBox9_Enter);
             // 
-            // button6
+            // btnTelOn
             // 
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Impact", 12F);
-            this.button6.ForeColor = System.Drawing.Color.Black;
-            this.button6.Location = new System.Drawing.Point(175, 110);
-            this.button6.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(109, 32);
-            this.button6.TabIndex = 47;
-            this.button6.Text = "TELEMETRY ON";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.btnTelOn.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btnTelOn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTelOn.Font = new System.Drawing.Font("Impact", 12F);
+            this.btnTelOn.ForeColor = System.Drawing.Color.Black;
+            this.btnTelOn.Location = new System.Drawing.Point(456, 125);
+            this.btnTelOn.Margin = new System.Windows.Forms.Padding(1);
+            this.btnTelOn.Name = "btnTelOn";
+            this.btnTelOn.Size = new System.Drawing.Size(134, 34);
+            this.btnTelOn.TabIndex = 47;
+            this.btnTelOn.Text = "TELEMETRY ON";
+            this.btnTelOn.UseVisualStyleBackColor = true;
+            this.btnTelOn.Click += new System.EventHandler(this.button6_Click);
             // 
-            // button1
+            // btnSend
             // 
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Impact", 12F);
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(382, 110);
-            this.button1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(115, 31);
-            this.button1.TabIndex = 42;
-            this.button1.Text = "Send";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnSend.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSend.Font = new System.Drawing.Font("Impact", 12F);
+            this.btnSend.ForeColor = System.Drawing.Color.Black;
+            this.btnSend.Location = new System.Drawing.Point(552, 67);
+            this.btnSend.Margin = new System.Windows.Forms.Padding(1);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(115, 31);
+            this.btnSend.TabIndex = 42;
+            this.btnSend.Text = "Send";
+            this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(113, 68);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox2.Location = new System.Drawing.Point(113, 69);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(527, 27);
+            this.textBox2.Size = new System.Drawing.Size(428, 27);
             this.textBox2.TabIndex = 46;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(113, 31);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Location = new System.Drawing.Point(113, 26);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(527, 27);
+            this.textBox1.Size = new System.Drawing.Size(556, 27);
             this.textBox1.TabIndex = 45;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -773,7 +721,7 @@ namespace cansat_app
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Impact", 12F);
             this.label22.ForeColor = System.Drawing.Color.Black;
-            this.label22.Location = new System.Drawing.Point(23, 70);
+            this.label22.Location = new System.Drawing.Point(28, 72);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(74, 20);
             this.label22.TabIndex = 43;
@@ -786,49 +734,55 @@ namespace cansat_app
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Impact", 12F);
             this.label18.ForeColor = System.Drawing.Color.Black;
-            this.label18.Location = new System.Drawing.Point(29, 32);
+            this.label18.Location = new System.Drawing.Point(28, 29);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(70, 20);
             this.label18.TabIndex = 44;
             this.label18.Text = "Received";
             // 
-            // button3
+            // btnConnect
             // 
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.Location = new System.Drawing.Point(310, 126);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(85, 35);
-            this.button3.TabIndex = 46;
-            this.button3.Text = "Connect";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.btnConnect.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btnConnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConnect.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConnect.ForeColor = System.Drawing.Color.Black;
+            this.btnConnect.Location = new System.Drawing.Point(290, 124);
+            this.btnConnect.Name = "btnConnect";
+            this.btnConnect.Size = new System.Drawing.Size(132, 35);
+            this.btnConnect.TabIndex = 46;
+            this.btnConnect.Text = "Connect";
+            this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.button3_Click);
             // 
             // serialPort1
             // 
             this.serialPort1.BaudRate = 19200;
             // 
-            // button8
+            // imgMqttGreen
             // 
-            this.button8.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.Color.Black;
-            this.button8.Location = new System.Drawing.Point(459, 126);
-            this.button8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(96, 35);
-            this.button8.TabIndex = 47;
-            this.button8.Text = "Timer";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.imgMqttGreen.Image = ((System.Drawing.Image)(resources.GetObject("imgMqttGreen.Image")));
+            this.imgMqttGreen.Location = new System.Drawing.Point(63, 45);
+            this.imgMqttGreen.Margin = new System.Windows.Forms.Padding(2);
+            this.imgMqttGreen.Name = "imgMqttGreen";
+            this.imgMqttGreen.Size = new System.Drawing.Size(30, 21);
+            this.imgMqttGreen.TabIndex = 18;
+            this.imgMqttGreen.TabStop = false;
+            this.imgMqttGreen.Visible = false;
+            this.imgMqttGreen.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // btnDisconnect
+            // 
+            this.btnDisconnect.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.btnDisconnect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDisconnect.Font = new System.Drawing.Font("Impact", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDisconnect.ForeColor = System.Drawing.Color.Black;
+            this.btnDisconnect.Location = new System.Drawing.Point(289, 169);
+            this.btnDisconnect.Name = "btnDisconnect";
+            this.btnDisconnect.Size = new System.Drawing.Size(132, 35);
+            this.btnDisconnect.TabIndex = 48;
+            this.btnDisconnect.Text = "Disconnect";
+            this.btnDisconnect.UseVisualStyleBackColor = true;
+            this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
             // 
             // Resolution
             // 
@@ -836,8 +790,9 @@ namespace cansat_app
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(869, 464);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnDisconnect);
+            this.Controls.Add(this.btnTelOn);
+            this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox8);
@@ -861,12 +816,12 @@ namespace cansat_app
             this.groupBox6.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgMqttRed)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgMqttGreen)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -890,30 +845,26 @@ namespace cansat_app
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.PictureBox pictureBox10;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.PictureBox pictureBox11;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.PictureBox imgMqttRed;
+        private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Timer timer1;
         private System.IO.Ports.SerialPort serialPort1;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnTelOn;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label packetCount_lbl;
         private System.Windows.Forms.Label missionTime_lbl;
         private System.Windows.Forms.Label cTemperature_lbl;
@@ -925,10 +876,11 @@ namespace cansat_app
         private System.Windows.Forms.Label gpsLatitude_lbl;
         private System.Windows.Forms.Label gpsTime_lbl;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label P1pc_lbl;
         private System.Windows.Forms.Label P1RPM_lbl;
         private System.Windows.Forms.Label P1T_lbl;
         private System.Windows.Forms.Label f;
         private System.Windows.Forms.Label P1A_lbl;
+        private System.Windows.Forms.PictureBox imgMqttGreen;
+        private System.Windows.Forms.Button btnDisconnect;
     }
 }

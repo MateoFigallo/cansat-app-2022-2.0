@@ -187,12 +187,26 @@ namespace Cansat2021
 
         private static void handleContainerFile(string path, List<Container> records)
         {
-            if (!File.Exists(path))
+            if (Directory.Exists(path))
             {
-                var myFile = File.Create(path);
-                
-                myFile.Close();
+                if (!File.Exists(path))
+                {
+                    var myFile = File.Create(path);
+
+                    myFile.Close();
+                }
             }
+            else
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(path));
+                if (!File.Exists(path))
+                {
+                    var myFile = File.Create(path);
+
+                    myFile.Close();
+                }
+            }
+            
             var csvFileLenth = new FileInfo(path).Length;
             if (csvFileLenth == 0)
             {

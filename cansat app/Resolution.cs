@@ -26,6 +26,7 @@ namespace cansat_app
         public static string export;
         public static int line;
         public static System.IO.StreamReader file ;
+        public static int packetCount = 0;
         public Resolution()
         {
             InitializeComponent();
@@ -87,6 +88,7 @@ namespace cansat_app
                         SetText(message);
                         //Split message and send to CsvHelper class to create or append 
                         telemetry = message.Split(',').ToList();
+                        telemetry[2] = packetCount.ToString();
                         Cansat2021.CsvHelper.writeCsvFromList(telemetry,export); //escribe los datos en un CSV file
 
                         
@@ -106,7 +108,7 @@ namespace cansat_app
                 var Containerdata = new Container {
                     TeamId = telemetry[0],
                     MissionTime =telemetry[1],
-                    PacketCount =telemetry[2],
+                    PacketCount =packetCount.ToString(),
                     PacketType =telemetry[3],
                     Mode =telemetry[4],
                     TPReleased =telemetry[5],
@@ -122,7 +124,7 @@ namespace cansat_app
                     CmdEcho =telemetry[15]
                 };
 
-                PutData(Containerdata.PacketCount, Containerdata.MissionTime, Containerdata.GpsTime, Containerdata.GpsLatitude, Containerdata.GpsLongitude, Containerdata.GpsAltitude
+                PutData(packetCount.ToString(), Containerdata.MissionTime, Containerdata.GpsTime, Containerdata.GpsLatitude, Containerdata.GpsLongitude, Containerdata.GpsAltitude
                     , Containerdata.GpsSats, Containerdata.Voltage, Containerdata.Altitude, Containerdata.Temperature, Containerdata.TPReleased);
             }
             else
@@ -132,7 +134,7 @@ namespace cansat_app
                     {
                         TeamId = telemetry[0],
                         MissionTime = telemetry[1],
-                        PacketCount = telemetry[2],
+                        PacketCount = packetCount.ToString(),
                         PacketType = telemetry[3],
                         TpAltitude = telemetry[4],
                         TpTemperature = telemetry[5],
@@ -356,38 +358,48 @@ namespace cansat_app
         {
             try
             {
-                var datatx = "CMD,1064,CX,ON";
-                bufferout.Clear();
-                bufferout.Add(0x7E);
-                bufferout.Add(0x00);
-                bufferout.Add((byte)(datatx.Length + 5));
-                bufferout.Add(0x01);
-                bufferout.Add(0x01);
-                bufferout.Add(0x00); //0x01 
-                bufferout.Add(0x10); //0x11
-                bufferout.Add(0x00);
-
-                for (int i = 0; i < datatx.Length; i++)
+                if (textBox1.Text == "")
                 {
-                    bufferout.Add((byte)datatx[i]);
+                    string cmd = "CMD,1064,CX,ON";
+                    //cmd[1]  =  "CMD,1064,SP1X,ON"; esto es solo para probar
+
+                    //foreach (string datatx in cmd)
+                    //{
+                    bufferout.Clear();
+                    bufferout.Add(0x7E);
+                    bufferout.Add(0x00);
+                    bufferout.Add((byte)(cmd.Length + 5));
+                    bufferout.Add(0x01);
+                    bufferout.Add(0x01);
+                    bufferout.Add(0x00); //0x01 
+                    bufferout.Add(0x10); //0x11
+                    bufferout.Add(0x00);
+
+                    for (int i = 0; i < cmd.Length; i++)
+                    {
+                        bufferout.Add((byte)cmd[i]);
+                    }
+                    byte chkaux = 0;
+                    for (int i = 3; i < cmd.Length + 8; i++)
+                    {
+                        chkaux += bufferout[i];
+                    }
+                    chkaux = (byte)(0xFF - chkaux);
+                    bufferout.Add(chkaux);
+
+
+
+
+                    if (!serialPort1.IsOpen)
+                    {
+                        serialPort1.Open();
+
+                    }
+                    serialPort1.Write(bufferout.ToArray(), 0, bufferout.Count);
                 }
-                byte chkaux = 0;
-                for (int i = 3; i < datatx.Length + 8; i++)
-                {
-                    chkaux += bufferout[i];
-                }
-                chkaux = (byte)(0xFF - chkaux);
-                bufferout.Add(chkaux);
-
-
-
-
-                if (!serialPort1.IsOpen)
-                {
-                    serialPort1.Open();
-
-                }
-                serialPort1.Write(bufferout.ToArray(), 0, bufferout.Count);
+                
+                //}
+                
             }
             catch (Exception ex)
             {
@@ -484,69 +496,7 @@ namespace cansat_app
             Resolution.simfile= this.textBox3.Text;
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            
-            {
-                string command;
-                if ((command = file.ReadLine()) == null)
-                {
-                    file.Close();
-                    timer1.Enabled = false;
-
-                }else{
-
-                      while (     (command.Contains("#") | command.Contains(" ") ) &      ((command = file.ReadLine()) != null)   )
-                       {
-                        command = file.ReadLine();
-                        
-                        }
-
-                    command=command.Replace("$", "1064");
-                    var datatx = command;
-                    bufferout.Clear();
-                    bufferout.Add(0x7E);
-                    bufferout.Add(0x00);
-                    bufferout.Add((byte)(datatx.Length + 5));
-                    bufferout.Add(0x01);
-                    bufferout.Add(0x01);
-                    bufferout.Add(0x00); //0x01 
-                    bufferout.Add(0x10); //0x11
-                    bufferout.Add(0x00);
-
-                    for (int i = 0; i < datatx.Length; i++)
-                    {
-                        bufferout.Add((byte)datatx[i]);
-                    }
-                    byte chkaux = 0;
-                    for (int i = 3; i < datatx.Length + 8; i++)
-                    {
-                        chkaux += bufferout[i];
-                    }
-                    chkaux = (byte)(0xFF - chkaux);
-                    bufferout.Add(chkaux);
-
-
-
-
-                    if (!serialPort1.IsOpen)
-                    {
-                        serialPort1.Open();
-
-                    }
-                    if ( (command != "") | (command!= "### End of file ###")  )
-                    {
-                        textBox2.Text = command;
-                        serialPort1.Write(bufferout.ToArray(), 0, bufferout.Count);
-                    }
-                    
-                }
-
-
-
-
-            }
-        }
+        
 
         private void button8_Click(object sender, EventArgs e)
         {
@@ -556,8 +506,11 @@ namespace cansat_app
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            packetCount++;
             fillForm(textBox1.Text.Split(',').ToList()); //muestra los datos en pantalla
             Mqtt.Publish(textBox1.Text); //envia los datos al Servidor MQTT
+            imgMqttRed.Visible =false;
+            imgMqttGreen.Visible = true;
         }
             
 
@@ -577,6 +530,22 @@ namespace cansat_app
         private void label22_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDisconnect_Click(object sender, EventArgs e)
+        {
+            if (serialPort1.IsOpen)
+            {
+                serialPort1.Close();
+            }
+
+            imgMqttRed.Visible = true;
+            imgMqttGreen.Visible = false;
         }
     }
     public class Container
