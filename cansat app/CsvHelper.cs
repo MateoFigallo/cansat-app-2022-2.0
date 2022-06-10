@@ -63,10 +63,10 @@ namespace Cansat2021
                             ACCEL_R = telemetryList[10],
                             ACCEL_P = telemetryList[11],
                             ACCEL_Y = telemetryList[12],
-                            MAG_R = telemetryList[13],
-                            MAG_P = telemetryList[14],
-                            MAG_Y = telemetryList[15],
-                            POINTING_ERROR = telemetryList[16],
+                            MAG_R = telemetryList[13].Trim()== "NAN" ? "0" : telemetryList[13],
+                            MAG_P = telemetryList[14].Trim()== "NAN" ? "0" : telemetryList[14],
+                            MAG_Y = telemetryList[15].Trim()== "NAN" ? "0" : telemetryList[15],
+                            POINTING_ERROR = telemetryList[16]== "NAN" ? "0" : telemetryList[16],
                             TpSoftwareState = telemetryList[17]
                         }
                     };
